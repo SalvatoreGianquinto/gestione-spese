@@ -12,6 +12,9 @@ app.use(express.json())
 const authRoutes = require("./routes/auth")
 app.use("/", authRoutes)
 
+const speseRoutes = require("./routes/spese")
+app.use("/spese", speseRoutes)
+
 mongoose
   .connect(process.env.DB_URI, {
     useNewUrlParser: true,
