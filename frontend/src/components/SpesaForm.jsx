@@ -1,8 +1,9 @@
 import { useState } from "react"
 import API from "../api"
-const SpesaForm = () => {
+
+const SpesaForm = ({ onNewSpesa }) => {
   const [importo, setImporto] = useState("")
-  const [tipo, setTipo] = useState("entarata")
+  const [tipo, setTipo] = useState("entrata")
   const [categoria, setCategoria] = useState("")
   const [data, setData] = useState("")
 
@@ -15,7 +16,7 @@ const SpesaForm = () => {
         categoria,
         data,
       })
-      console.log("Spesa aggiunta:", res.data)
+      onNewSpesa(res.data)
       setImporto("")
       setTipo("entrata")
       setCategoria("")
@@ -26,7 +27,7 @@ const SpesaForm = () => {
   }
 
   return (
-    <div className="w-full min-h-screen flex items-start md:items-start bg-gray-500 p-6">
+    <div className="w-full flex items-start md:items-start bg-gray-500">
       <form
         onSubmit={handleSubmit}
         className="bg-white w-full max-w-md p-6 rounded-2xl shadow-lg border"
