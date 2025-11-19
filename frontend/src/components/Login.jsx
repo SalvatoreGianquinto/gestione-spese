@@ -18,7 +18,8 @@ const Login = () => {
         password,
       })
       localStorage.setItem("token", res.data.token)
-      alert(`Login effettuato! Benvenuto ${res.data.user.nome}`)
+      localStorage.setItem("user", JSON.stringify(res.data.user))
+
       navigate("/")
     } catch (error) {
       if (error.response && error.response.data) {

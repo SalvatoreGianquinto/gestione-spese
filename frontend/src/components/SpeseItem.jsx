@@ -1,5 +1,6 @@
 import { useState } from "react"
 import API from "../api"
+import { Pencil, Trash2 } from "lucide-react"
 
 const SpeseItem = ({ item, onDelete, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false)
@@ -44,13 +45,13 @@ const SpeseItem = ({ item, onDelete, onUpdate }) => {
               onClick={() => setIsEditing(true)}
               className="bg-blue-500 text-white px-2 py-1 rounded"
             >
-              Modifica
+              <Pencil size={18} />
             </button>
             <button
               onClick={handleDelete}
               className="bg-red-500 text-white px-2 py-1 rounded"
             >
-              Cancella
+              <Trash2 size={18} />
             </button>
           </div>
         </div>
