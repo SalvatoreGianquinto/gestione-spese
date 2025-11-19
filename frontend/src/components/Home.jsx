@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import SpesaForm from "./SpesaForm"
 import SpeseContainer from "./SpeseContainer"
 import API from "../api"
+import Header from "../Header"
 
 const Home = () => {
   const [spese, setSpese] = useState([])
@@ -33,16 +34,21 @@ const Home = () => {
   }
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row bg-gray-500 p-6 gap-6 items-start">
-      <div className="w-full md:w-1/3">
-        <SpesaForm onNewSpesa={handleNewSpesa} />
+    <>
+      <Header spese={spese} />
+      <div className="w-full min-h-screen bg-gray-500 p-6">
+        <div className="flex flex-col md:flex-row gap-6 items-start">
+          <div className="w-full md:w-1/3">
+            <SpesaForm onNewSpesa={handleNewSpesa} />
+          </div>
+          <SpeseContainer
+            spese={spese}
+            onDelete={handleDelete}
+            onUpdate={handleUpdate}
+          />
+        </div>
       </div>
-      <SpeseContainer
-        spese={spese}
-        onDelete={handleDelete}
-        onUpdate={handleUpdate}
-      />
-    </div>
+    </>
   )
 }
 
