@@ -1,5 +1,6 @@
 import { useState } from "react"
 import SpeseList from "./SpeseList"
+import ChartEntrateUscite from "./ChartEntrateUscite"
 
 const SpeseContainer = ({ spese, onDelete, onUpdate }) => {
   const [mese, setMese] = useState(String(new Date().getMonth() + 1))
@@ -77,6 +78,9 @@ const SpeseContainer = ({ spese, onDelete, onUpdate }) => {
             Totale Uscite: € {totaleUscite.toFixed(2)}
           </div>
         </div>
+      </div>
+      <div className="w-full mt-6">
+        <ChartEntrateUscite entrate={totaleEntrate} uscite={totaleUscite} />
       </div>
     </div>
   )
