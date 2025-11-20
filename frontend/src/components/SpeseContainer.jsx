@@ -26,25 +26,37 @@ const SpeseContainer = ({ spese, onDelete, onUpdate }) => {
   return (
     <div className="flex flex-col w-full md:w-2/3 gap-4">
       <div className="w-full mb-2 flex justify-end">
-        <select
-          value={mese}
-          onChange={(e) => setMese(e.target.value)}
-          className="bg-white p-2 rounded-lg shadow-md border"
-        >
-          <option value="">Tutti i mesi</option>
-          <option value={1}>Gennaio</option>
-          <option value={2}>Febbraio</option>
-          <option value={3}>Marzo</option>
-          <option value={4}>Aprile</option>
-          <option value={5}>Maggio</option>
-          <option value={6}>Giugno</option>
-          <option value={7}>Luglio</option>
-          <option value={8}>Agosto</option>
-          <option value={9}>Settembre</option>
-          <option value={10}>Ottobre</option>
-          <option value={11}>Novembre</option>
-          <option value={12}>Dicembre</option>
-        </select>
+        <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mb-4">
+          {[
+            "Gen",
+            "Feb",
+            "Mar",
+            "Apr",
+            "Mag",
+            "Giu",
+            "Lug",
+            "Ago",
+            "Set",
+            "Ott",
+            "Nov",
+            "Dic",
+          ].map((m, i) => (
+            <button
+              key={m}
+              onClick={() => setMese(i + 1)}
+              className={`
+        shrink-0 px-4 py-2 rounded-full font-medium transition-all 
+        ${
+          mese == i + 1
+            ? "bg-indigo-500 text-white shadow-md"
+            : "bg-white text-gray-700 border border-gray-300 shadow-sm"
+        }
+      `}
+            >
+              {m}
+            </button>
+          ))}
+        </div>
       </div>
       <div
         className={`p-3 rounded-xl text-center font-semibold shadow-md
