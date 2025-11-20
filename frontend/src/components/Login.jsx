@@ -31,58 +31,54 @@ const Login = () => {
   }
 
   return (
-    <div className="flex h-screen w-full">
-      <div className="basis-3/5 bg-blue-500 flex flex-col justify-center items-center p-10 text-white">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-blue-500 p-8 rounded-xl w-96 flex flex-col gap-4"
-        >
-          <h2 className="flex justify-center items-center text-4xl font-bold text-white">
-            Login
-          </h2>
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-linear-to-br from-blue-600 to-purple-700 p-6">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
+        alt="login secure"
+        className="absolute opacity-20 w-80 top-12 left-12 hidden md:block select-none pointer-events-none"
+      />
+
+      <div className="backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl rounded-3xl w-full max-w-md p-10 text-white">
+        <h1 className="text-4xl font-bold text-center mb-6">Accedi</h1>
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="email"
-            autoComplete="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border-2 border-gray-300 rounded-lg p-3 text-gray-900 
-             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-white transition"
+            className="p-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-white/60 outline-none focus:ring-2 focus:ring-blue-300"
             required
           />
+
           <input
             type="password"
-            autoComplete="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border-2 border-gray-300 rounded-lg p-3 text-gray-900 
-             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-white transition"
+            className="p-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-white/60 outline-none focus:ring-2 focus:ring-blue-300"
             required
           />
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+
+          {error && <p className="text-red-300 text-sm text-center">{error}</p>}
+
           <button
             type="submit"
-            className="bg-blue-900 py-2 rounded-lg text-white font-semibold w-full
-            hover:bg-blue-800 active:scale-95 transition duration-300 shadow-md"
+            className="mt-2 bg-white/20 hover:bg-white/30 transition text-white font-semibold py-3 rounded-xl border border-white/40"
           >
-            Login
+            Accedi
           </button>
         </form>
-      </div>
-      <div className="basis-2/5 bg-red-500 flex flex-col items-center justify-center p-10">
-        {" "}
-        <h2 className="text-4xl mb-5 font-bold text-white">
-          Non hai un account?
-        </h2>
-        <button
-          onClick={() => navigate("/register")}
-          className="mt-4 px-6 py-2 rounded-lg border border-white text-white font-semibold
-           hover:bg-white hover:text-red-500 transition duration-300 shadow-lg"
-        >
-          {" "}
-          Registrati
-        </button>
+
+        <p className="text-center mt-6 text-white/70">
+          Non hai un account?{" "}
+          <span
+            onClick={() => navigate("/register")}
+            className="cursor-pointer text-white underline underline-offset-4 hover:text-purple-200"
+          >
+            Registrati
+          </span>
+        </p>
       </div>
     </div>
   )
