@@ -1,29 +1,17 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 
 const Navbar = () => {
   const [open, setOpen] = useState(false)
-  const [saldo, setSaldo] = useState(0)
-
-  const location = useLocation()
   const navigate = useNavigate()
+  const location = useLocation()
 
   const user = JSON.parse(localStorage.getItem("user"))
-
-  useEffect(() => {
-    const aggiornaSaldo = () => {
-      const storedSaldo = Number(localStorage.getItem("saldo")) || 0
-      setSaldo(storedSaldo)
-    }
-
-    window.addEventListener("saldoAggiornato", aggiornaSaldo)
-    aggiornaSaldo()
-
-    return () => window.removeEventListener("saldoAggiornato", aggiornaSaldo)
-  }, [])
+  const saldo = Number(localStorage.getItem("saldo")) || 0
 
   const handleLogout = () => {
-    localStorage.clear()
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
     navigate("/login")
   }
 
@@ -36,43 +24,59 @@ const Navbar = () => {
         Gestione Spese
       </h1>
 
+      {/* DESKTOP */}
       <div className="hidden md:flex items-center gap-6">
-        <span className="text-gray-700 font-semibold">
-          Ciao, {user?.nome || "Utente"}
-        </span>
+        {!user ? (
+          <>
+            <button onClick={() => navigate("/login")} className="font-medium">
+              Login
+            </button>
+            <button
+              onClick={() => navigate("/register")}
+              className="font-medium"
+            >
+              Register
+            </button>
+          </>
+        ) : (
+          <>
+            <span className="font-semibold">Ciao, {user.nome}</span>
 
-        <button onClick={() => navigate("/")} className="hover:text-black">
-          Home
-        </button>
+            <button onClick={() => navigate("/")} className="font-medium">
+              Home
+            </button>
 
-        <button
-          onClick={() => navigate("/analytics")}
-          className="hover:text-black"
-        >
-          Analytics
-        </button>
+            <button
+              onClick={() => navigate("/analytics")}
+              className="font-medium"
+            >
+              Analytics
+            </button>
 
-        <button
-          onClick={() => navigate("/profilo")}
-          className="hover:text-black"
-        >
-          Profilo
-        </button>
+            <button
+              onClick={() => navigate("/profilo")}
+              className="font-medium"
+            >
+              Profilo
+            </button>
 
-        {location.pathname === "/" && (
-          <span className="px-4 py-2 bg-gray-100 rounded-lg font-semibold text-gray-700">
-            Saldo: € {saldo.toFixed(2)}
-          </span>
+            {location.pathname === "/" && (
+              <span className="px-4 py-2 bg-gray-100 rounded-lg font-semibold">
+                Saldo: € {saldo.toFixed(2)}
+              </span>
+            )}
+
+            <button
+              onClick={handleLogout}
+              className="text-red-600 font-semibold"
+            >
+              Logout
+            </button>
+          </>
         )}
-
-        <button
-          onClick={handleLogout}
-          className="text-red-600 font-semibold hover:text-red-800"
-        >
-          Logout
-        </button>
       </div>
 
+      {/* MOBILE MENU TOGGLE */}
       <button
         className="md:hidden flex flex-col gap-1"
         onClick={() => setOpen(!open)}
@@ -82,51 +86,73 @@ const Navbar = () => {
         <span className="w-6 h-1 bg-black rounded"></span>
       </button>
 
+      {/* MOBILE MENU */}
       {open && (
         <div className="absolute top-16 right-4 bg-white shadow-lg rounded-lg p-4 flex flex-col gap-4 md:hidden w-40">
-          <span className="text-gray-700 font-semibold">
-            Ciao, {user?.nome || "Utente"}
-          </span>
+          {!user ? (
+            <>
+              <button
+                onClick={() => {
+                  navigate("/login")
+                  setOpen(false)
+                }}
+              >
+                Login
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/register")
+                  setOpen(false)
+                }}
+              >
+                Register
+              </button>
+            </>
+          ) : (
+            <>
+              <span className="font-semibold">Ciao, {user.nome}</span>
 
-          <button
-            onClick={() => {
-              navigate("/")
-              setOpen(false)
-            }}
-            className="text-left"
-          >
-            Home
-          </button>
+              <button
+                onClick={() => {
+                  navigate("/")
+                  setOpen(false)
+                }}
+              >
+                Home
+              </button>
 
-          <button
-            onClick={() => {
-              navigate("/analytics")
-              setOpen(false)
-            }}
-            className="text-left"
-          >
-            Analytics
-          </button>
+              <button
+                onClick={() => {
+                  navigate("/analytics")
+                  setOpen(false)
+                }}
+              >
+                Analytics
+              </button>
 
-          <button
-            onClick={() => {
-              navigate("/profilo")
-              setOpen(false)
-            }}
-            className="text-left"
-          >
-            Profilo
-          </button>
+              <button
+                onClick={() => {
+                  navigate("/profilo")
+                  setOpen(false)
+                }}
+              >
+                Profilo
+              </button>
 
-          {location.pathname === "/" && (
-            <span className="px-4 py-2 bg-gray-100 rounded-lg font-semibold text-center">
-              € {saldo.toFixed(2)}
-            </span>
+              {location.pathname === "/" && (
+                <span className="px-4 py-2 bg-gray-100 rounded-lg font-semibold text-center">
+                  € {saldo.toFixed(2)}
+                </span>
+              )}
+
+              <button
+                onClick={handleLogout}
+                className="text-red-600 font-semibold"
+              >
+                Logout
+              </button>
+            </>
           )}
-
-          <button onClick={handleLogout} className="text-red-600 font-semibold">
-            Logout
-          </button>
         </div>
       )}
     </nav>
