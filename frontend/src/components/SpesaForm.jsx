@@ -6,9 +6,20 @@ const SpesaForm = ({ onNewSpesa }) => {
   const [tipo, setTipo] = useState("entrata")
   const [categoria, setCategoria] = useState("")
   const [data, setData] = useState("")
+  const [warning, setWarning] = useState("")
+
+  const user = JSON.parse(localStorage.getItem("user"))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (!user) {
+      setWarning("Per aggiungere una spesa devi effettuare il login.")
+      return
+    }
+
+    setWarning("")
+
     try {
       const res = await API.post("/spese", {
         importo,
@@ -16,7 +27,9 @@ const SpesaForm = ({ onNewSpesa }) => {
         categoria,
         data,
       })
+
       onNewSpesa(res.data)
+
       setImporto("")
       setTipo("entrata")
       setCategoria("")
@@ -27,11 +40,17 @@ const SpesaForm = ({ onNewSpesa }) => {
   }
 
   return (
-    <div className="w-full flex items-start md:items-start bg-gray-500">
+    <div className="w-full min-h-screen flex items-start md:items-start bg-gray-500 p-6">
       <form
         onSubmit={handleSubmit}
         className="bg-white w-full max-w-md p-6 rounded-2xl shadow-lg border"
       >
+        {warning && (
+          <p className="text-red-600 bg-red-100 p-2 rounded-lg text-center mb-4 font-medium">
+            {warning}
+          </p>
+        )}
+
         <div className="mb-6 text-center">
           <label className="block text-sm font-medium text-gray-600">
             Importo
@@ -45,6 +64,7 @@ const SpesaForm = ({ onNewSpesa }) => {
             required
           />
         </div>
+
         <div className="mb-6 flex items-center justify-center">
           <div
             className="relative inline-flex w-40 h-10 bg-gray-200 rounded-full cursor-pointer"
@@ -71,6 +91,7 @@ const SpesaForm = ({ onNewSpesa }) => {
             </span>
           </div>
         </div>
+
         <div className="mb-6 text-center">
           <label className="block text-sm font-medium text-gray-600 mb-2">
             Categoria
@@ -84,6 +105,7 @@ const SpesaForm = ({ onNewSpesa }) => {
             required
           />
         </div>
+
         <div className="mb-6 text-center">
           <label className="block text-sm font-medium text-gray-600 mb-2">
             Data
@@ -96,11 +118,12 @@ const SpesaForm = ({ onNewSpesa }) => {
             required
           />
         </div>
+
         <button
           type="submit"
           className="w-full p-3 bg-blue-600 text-white rounded-xl font-semibold"
         >
-          Aggiungi transizione
+          Aggiungi transazione
         </button>
       </form>
     </div>
