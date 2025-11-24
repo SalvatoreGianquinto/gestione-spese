@@ -15,6 +15,9 @@ app.use("/", authRoutes)
 const speseRoutes = require("./routes/spese")
 app.use("/spese", speseRoutes)
 
+const userRoutes = require("./routes/user")
+app.use("/user", userRoutes)
+
 mongoose
   .connect(process.env.DB_URI, {
     useNewUrlParser: true,
