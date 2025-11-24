@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import SpesaForm from "./SpesaForm"
 import SpeseContainer from "./SpeseContainer"
 import API from "../api"
-import Header from "../Header"
 
 const Home = () => {
   const [spese, setSpese] = useState([])
@@ -33,22 +32,35 @@ const Home = () => {
     )
   }
 
+  const totaleEntrate = spese
+    .filter((s) => s.tipo === "entrata")
+    .reduce((sum, item) => sum + Number(item.importo), 0)
+
+  const totaleUscite = spese
+    .filter((s) => s.tipo === "uscita")
+    .reduce((sum, item) => sum + Number(item.importo), 0)
+
+  const saldoTotale = totaleEntrate - totaleUscite
+
+  useEffect(() => {
+    localStorage.setItem("saldo", saldoTotale)
+    window.dispatchEvent(new Event("saldoAggiornato"))
+  }, [saldoTotale])
+
   return (
-    <>
-      <Header spese={spese} />
-      <div className="w-full min-h-screen bg-gray-500 p-6">
-        <div className="flex flex-col md:flex-row gap-6 items-start">
-          <div className="w-full md:w-1/3">
-            <SpesaForm onNewSpesa={handleNewSpesa} />
-          </div>
-          <SpeseContainer
-            spese={spese}
-            onDelete={handleDelete}
-            onUpdate={handleUpdate}
-          />
+    <div className="w-full min-h-screen bg-gray-500 p-6">
+      <div className="flex flex-col md:flex-row gap-6 items-start">
+        <div className="w-full md:w-1/3">
+          <SpesaForm onNewSpesa={handleNewSpesa} />
         </div>
+
+        <SpeseContainer
+          spese={spese}
+          onDelete={handleDelete}
+          onUpdate={handleUpdate}
+        />
       </div>
-    </>
+    </div>
   )
 }
 
