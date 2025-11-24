@@ -16,7 +16,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full bg-white shadow-md px-6 py-4 flex justify-between items-center sticky top-0 z-20">
+    <nav className="w-full bg-white shadow-md px-6 py-4 flex justify-between items-center top-0 z-20">
       <h1
         className="text-xl font-bold cursor-pointer"
         onClick={() => navigate("/")}
@@ -24,7 +24,6 @@ const Navbar = () => {
         Gestione Spese
       </h1>
 
-      {/* DESKTOP */}
       <div className="hidden md:flex items-center gap-6">
         {!user ? (
           <>
@@ -41,10 +40,6 @@ const Navbar = () => {
         ) : (
           <>
             <span className="font-semibold">Ciao, {user.nome}</span>
-
-            <button onClick={() => navigate("/")} className="font-medium">
-              Home
-            </button>
 
             <button
               onClick={() => navigate("/analytics")}
@@ -76,7 +71,6 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* MOBILE MENU TOGGLE */}
       <button
         className="md:hidden flex flex-col gap-1"
         onClick={() => setOpen(!open)}
@@ -86,9 +80,8 @@ const Navbar = () => {
         <span className="w-6 h-1 bg-black rounded"></span>
       </button>
 
-      {/* MOBILE MENU */}
       {open && (
-        <div className="absolute top-16 right-4 bg-white shadow-lg rounded-lg p-4 flex flex-col gap-4 md:hidden w-40">
+        <div className="absolute top-16 right-4 bg-white shadow-lg rounded-lg p-4 flex flex-col gap-4 md:hidden w-40 z-50">
           {!user ? (
             <>
               <button
@@ -111,15 +104,6 @@ const Navbar = () => {
           ) : (
             <>
               <span className="font-semibold">Ciao, {user.nome}</span>
-
-              <button
-                onClick={() => {
-                  navigate("/")
-                  setOpen(false)
-                }}
-              >
-                Home
-              </button>
 
               <button
                 onClick={() => {

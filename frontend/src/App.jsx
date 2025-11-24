@@ -10,6 +10,7 @@ import Login from "./components/Login"
 import Home from "./components/Home"
 import Navbar from "./components/Navbar"
 import Profilo from "./components/Profilo"
+import Analytics from "./components/Analytics"
 
 function AppWrapper() {
   const location = useLocation()
@@ -25,6 +26,7 @@ function AppWrapper() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/profilo" element={<Profilo />} />
+        <Route path="/analytics" element={<Analytics />} />
       </Routes>
     </>
   )

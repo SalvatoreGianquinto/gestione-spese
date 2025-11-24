@@ -91,9 +91,6 @@ const SpeseContainer = ({ spese, onDelete, onUpdate }) => {
           </div>
         </div>
       </div>
-      <div className="w-full mt-6">
-        <ChartEntrateUscite entrate={totaleEntrate} uscite={totaleUscite} />
-      </div>
     </div>
   )
 }
