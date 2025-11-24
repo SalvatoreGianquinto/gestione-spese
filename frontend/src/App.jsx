@@ -9,7 +9,6 @@ import Register from "./components/Register"
 import Login from "./components/Login"
 import Home from "./components/Home"
 import Navbar from "./components/Navbar"
-import Profilo from "./components/Profilo"
 
 function AppWrapper() {
   const location = useLocation()
@@ -24,7 +23,6 @@ function AppWrapper() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
-        <Route path="/profilo" element={<Profilo />} />
       </Routes>
     </>
   )
