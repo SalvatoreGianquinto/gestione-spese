@@ -47,7 +47,7 @@ const Profilo = () => {
   }
 
   return (
-    <div className="w-full min-h-screen bg-gray-100 p-6 flex justify-center items-start">
+    <div className="w-full bg-gray-500 p-6 flex justify-center items-start">
       <div className="w-full max-w-xl bg-white/80 backdrop-blur-2xl shadow-xl rounded-2xl p-8 border border-gray-200">
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           Il tuo profilo
