@@ -61,7 +61,7 @@ const SpeseContainer = ({ spese, onDelete, onUpdate }) => {
       <div
         className={`p-3 rounded-xl text-center font-semibold shadow-md
     ${
-      saldoMese >= 0 ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+      saldoMese >= 0 ? "bg-green-300 text-green-700" : "bg-red-100 text-red-700"
     }`}
       >
         Saldo del mese: € {saldoMese.toFixed(2)}
@@ -75,7 +75,7 @@ const SpeseContainer = ({ spese, onDelete, onUpdate }) => {
             onUpdate={onUpdate}
           />
 
-          <div className="mt-2 p-3 bg-green-100 rounded-xl text-center font-semibold">
+          <div className="mt-2 p-3 bg-green-300 rounded-xl text-center font-semibold">
             Totale Entrate: € {totaleEntrate.toFixed(2)}
           </div>
         </div>
@@ -86,7 +86,7 @@ const SpeseContainer = ({ spese, onDelete, onUpdate }) => {
             onDelete={onDelete}
             onUpdate={onUpdate}
           />
-          <div className="mt-2 p-3 bg-red-100 rounded-xl text-center font-semibold">
+          <div className="mt-2 p-3 bg-red-400 rounded-xl text-center font-semibold">
             Totale Uscite: € {totaleUscite.toFixed(2)}
           </div>
         </div>

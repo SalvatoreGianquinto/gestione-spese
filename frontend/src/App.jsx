@@ -20,7 +20,7 @@ function AppWrapper() {
     location.pathname === "/login" || location.pathname === "/register"
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col bg-linear-to-br from-indigo-600 via-blue-600 to-purple-600 min-h-screen">
       {!hideLayout && <Navbar />}
 
       <div className="grow pt-6">
