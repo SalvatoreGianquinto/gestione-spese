@@ -23,7 +23,7 @@ function AppWrapper() {
     <div className="flex flex-col bg-linear-to-br from-indigo-600 via-blue-600 to-purple-600 min-h-screen">
       {!hideLayout && <Navbar />}
 
-      <div className="grow pt-6">
+      <div className="grow">
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />

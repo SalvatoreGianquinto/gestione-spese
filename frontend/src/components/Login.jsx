@@ -31,13 +31,19 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-linear-to-br from-blue-600 to-purple-700 p-6">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
-        alt="login secure"
-        className="absolute opacity-20 w-80 top-12 left-12 hidden md:block select-none pointer-events-none"
-      />
-
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-linear-to-br from-indigo-600 via-blue-600 to-purple-600 p-6">
+      <div className="absolute bottom-0 left-0 right-0 opacity-20 pointer-events-none">
+        <svg
+          className="w-full h-32 animate-[wave_6s_ease_in_out_infinite]"
+          preserveAspectRatio="none"
+          viewBox="0 0 1440 320"
+        >
+          <path
+            fill="white"
+            d="M0,192L80,197.3C160,203,320,213,480,186.7C640,160,800,96,960,80C1120,64,1280,96,1360,112L1440,128V320H0Z"
+          ></path>
+        </svg>
+      </div>
       <div className="backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl rounded-3xl w-full max-w-md p-10 text-white">
         <h1 className="text-4xl font-bold text-center mb-6">Accedi</h1>
 
