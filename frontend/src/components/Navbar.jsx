@@ -16,7 +16,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full bg-white shadow-md px-6 py-4 flex justify-between items-center top-0 z-20">
+    <nav className="w-full bg-white/70 shadow-xl px-6 py-4 flex justify-between items-center top-0 z-20">
       <h1
         className="text-xl font-bold cursor-pointer"
         onClick={() => navigate("/")}
@@ -56,7 +56,7 @@ const Navbar = () => {
             </button>
 
             {location.pathname === "/" && (
-              <span className="px-4 py-2 bg-gray-100 rounded-lg font-semibold">
+              <span className="px-4 py-2 bg-white/70 rounded-lg font-semibold">
                 Saldo: € {saldo.toFixed(2)}
               </span>
             )}

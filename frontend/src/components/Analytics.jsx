@@ -28,10 +28,10 @@ const Analytics = () => {
   const saldoMese = totaleEntrate - totaleUscite
 
   return (
-    <div className="w-full p-6">
+    <div className="w-full p-6 pt-1">
       <h1 className="text-3xl font-bold mb-6">Analytics</h1>
 
-      <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mb-6">
+      <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mb-4">
         {[
           "Gen",
           "Feb",
@@ -49,13 +49,14 @@ const Analytics = () => {
           <button
             key={m}
             onClick={() => setMese(i + 1)}
-            className={`shrink-0 px-4 py-2 rounded-full font-medium transition
-              ${
-                mese == i + 1
-                  ? "bg-indigo-500 text-white shadow"
-                  : "bg-white text-gray-700 border"
-              }
-            `}
+            className={`
+        shrink-0 px-4 py-2 rounded-full font-medium transition-all 
+        ${
+          mese == i + 1
+            ? "bg-indigo-500 text-white shadow-md"
+            : "bg-white text-gray-700 border border-gray-300 shadow-sm"
+        }
+      `}
           >
             {m}
           </button>
