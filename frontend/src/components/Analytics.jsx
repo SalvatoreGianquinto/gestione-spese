@@ -63,18 +63,18 @@ const Analytics = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div className="p-4 bg-green-100 rounded-xl font-semibold text-center">
+        <div className="p-4 bg-green-200 rounded-xl font-semibold text-center">
           Entrate: € {totaleEntrate.toFixed(2)}
         </div>
-        <div className="p-4 bg-red-100 rounded-xl font-semibold text-center">
+        <div className="p-4 bg-red-200 rounded-xl font-semibold text-center">
           Uscite: € {totaleUscite.toFixed(2)}
         </div>
-        <div className="p-4 bg-blue-100 rounded-xl font-semibold text-center">
+        <div className="p-4 bg-blue-200 rounded-xl font-semibold text-center">
           Saldo del mese: € {saldoMese.toFixed(2)}
         </div>
       </div>
 
-      <div className="bg-white p-4 rounded-xl shadow border w-full h-96">
+      <div className="bg-white/80 p-8 backdrop-blur-2xl rounded-xl shadow border border-gray-200 w-full h-96">
         <ChartEntrateUscite entrate={totaleEntrate} uscite={totaleUscite} />
       </div>
     </div>
