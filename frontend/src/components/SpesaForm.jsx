@@ -43,7 +43,7 @@ const SpesaForm = ({ onNewSpesa }) => {
     <div className="w-full flex items-start md:items-start">
       <form
         onSubmit={handleSubmit}
-        className="bg-white/20 backdrop-blur-xl border-white/30 rounded-3xl shadow-2xl p-8 transition-all"
+        className="bg-white/80 backdrop-blur-2xl border-white/30 rounded-3xl shadow-2xl p-8 transition-all"
       >
         {warning && (
           <p className="text-red-600 bg-red-100/80 p-2 rounded-lg text-center mb-4 font-medium backdrop-blur-sm">
@@ -52,7 +52,7 @@ const SpesaForm = ({ onNewSpesa }) => {
         )}
 
         <div className="mb-6 text-center">
-          <label className="block text-sm text-white/70 font-medium tracking-wide mb-3">
+          <label className="block text-sm text-black/70 font-medium tracking-wide mb-3">
             Importo
           </label>
           <input
@@ -60,8 +60,8 @@ const SpesaForm = ({ onNewSpesa }) => {
             placeholder="0.00€"
             value={importo}
             onChange={(e) => setImporto(e.target.value)}
-            className="text-5xl font-bold w-full text-center p-3 bg-white/10 backdrop-blur-lg rounded-xl border border-white/30 text-white
-            placeholder-white/60 focus:ring-2 focus:ring-indigo-300 outline-none"
+            className="text-5xl font-bold w-full text-center p-3 bg-white/10 backdrop-blur-lg rounded-xl border border-white/30 text-black/70
+            placeholder-black/40 focus:ring-2 focus:ring-indigo-300 outline-none"
             required
           />
         </div>
@@ -72,14 +72,14 @@ const SpesaForm = ({ onNewSpesa }) => {
             onClick={() => setTipo(tipo === "entrata" ? "uscita" : "entrata")}
           >
             <div
-              className={`absolute top-1.5 w-1/2 h-9 bg-white rounded-full shadow-md flex items-center justify-center transition-all duration-300 ${
+              className={`absolute top-1.5 w-1/2 h-9 bg-gray-400 rounded-full shadow-md flex items-center justify-center transition-all duration-300 ${
                 tipo === "entrata" ? "left-1" : "right-1"
               }`}
             ></div>
 
             <span
               className={`absolute left-0 w-1/2 text-center text-sm font-medium leading-12 ${
-                tipo === "entrata" ? "text-green-300" : "text-white/40"
+                tipo === "entrata" ? "text-green-700" : "text-black/40"
               } `}
             >
               Entrata
@@ -87,7 +87,7 @@ const SpesaForm = ({ onNewSpesa }) => {
 
             <span
               className={`absolute right-0 w-1/2 text-center text-sm font-medium leading-12 ${
-                tipo === "uscita" ? "text-red-300" : "text-white/40"
+                tipo === "uscita" ? "text-red-500" : "text-black/40"
               }`}
             >
               Uscita
@@ -96,7 +96,7 @@ const SpesaForm = ({ onNewSpesa }) => {
         </div>
 
         <div className="mb-6 text-center">
-          <label className="block text-sm text-white/70 font-medium tracking-wide mb-3">
+          <label className="block text-sm text-black/70 font-medium tracking-wide mb-3">
             Categoria
           </label>
           <input
@@ -104,22 +104,22 @@ const SpesaForm = ({ onNewSpesa }) => {
             placeholder="Inserisci una categoria"
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
-            className="w-full p-3 rounded-xl text-center text-white font-semibold bg-white/10 backdrop-blur-lg 
-            border border-white/30 placeholder-white/60 focus:ring-2 focus:ring-indigo-300 outline-none"
+            className="w-full p-3 rounded-xl text-center text-black/70 font-semibold bg-white/10 backdrop-blur-lg 
+            border border-white/30 placeholder-black/40 focus:ring-2 focus:ring-indigo-300 outline-none"
             required
           />
         </div>
 
         <div className="mb-6 text-center">
-          <label className="block text-sm text-white/70 font-medium tracking-wide mb-3">
+          <label className="block text-sm text-black/70 font-medium tracking-wide mb-3">
             Data
           </label>
           <input
             type="date"
             value={data}
             onChange={(e) => setData(e.target.value)}
-            className="w-full p-3 rounded-xl text-center text-white font-semibold bg-white/10 backdrop-blur-lg 
-            border border-white/30 placeholder-white/60 focus:ring-2 focus:ring-indigo-300 outline-none"
+            className="w-full p-3 rounded-xl text-center text-black/40 font-semibold bg-white/10 backdrop-blur-lg 
+            border border-white/30 placeholder-black/40 focus:ring-2 focus:ring-indigo-300 outline-none"
             required
           />
         </div>

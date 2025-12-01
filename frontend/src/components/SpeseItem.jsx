@@ -31,12 +31,11 @@ const SpeseItem = ({ item, onDelete, onUpdate }) => {
 
   return (
     <>
-      {/* CARD NORMALE */}
       <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg mb-3 flex justify-between items-center">
         <div>
-          <p className="text-lg font-semibold text-white">{item.categoria}</p>
-          <p className="text-md font-bold text-indigo-300">{item.importo} €</p>
-          <p className="text-sm text-white/50">
+          <p className="text-lg font-semibold text-black">{item.categoria}</p>
+          <p className="text-md font-bold text-indigo-500">{item.importo} €</p>
+          <p className="text-sm text-black/50">
             {new Date(item.data).toLocaleDateString("it-IT")}
           </p>
         </div>
@@ -58,11 +57,10 @@ const SpeseItem = ({ item, onDelete, onUpdate }) => {
         </div>
       </div>
 
-      {/* MODALE */}
       {isEditing && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50 p-4">
-          <div className="bg-white/20 backdrop-blur-2xl border border-white/30 rounded-3xl p-6 w-full max-w-md shadow-2xl animate-fadeIn">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">
+          <div className="bg-white/80 backdrop-blur-2xl border border-white/30 rounded-3xl p-6 w-full max-w-md shadow-2xl animate-fadeIn">
+            <h3 className="text-2xl font-bold text-black mb-6 text-center">
               Modifica transazione
             </h3>
 
@@ -72,7 +70,7 @@ const SpeseItem = ({ item, onDelete, onUpdate }) => {
                 onChange={(e) =>
                   setForm({ ...form, categoria: e.target.value })
                 }
-                className="p-3 rounded-xl bg-white/10 backdrop-blur-lg border border-white/30 text-white font-semibold placeholder-white/40 outline-none focus:ring-2 focus:ring-indigo-400"
+                className="p-3 rounded-xl bg-white/10 backdrop-blur-lg border border-white/30 text-black font-semibold placeholder-white/40 outline-none focus:ring-2 focus:ring-indigo-400"
                 placeholder="Categoria"
               />
 
@@ -80,7 +78,7 @@ const SpeseItem = ({ item, onDelete, onUpdate }) => {
                 type="number"
                 value={form.importo}
                 onChange={(e) => setForm({ ...form, importo: e.target.value })}
-                className="p-3 rounded-xl bg-white/10 backdrop-blur-lg border border-white/30 text-white font-semibold placeholder-white/40 outline-none focus:ring-2 focus:ring-indigo-400"
+                className="p-3 rounded-xl bg-white/10 backdrop-blur-lg border border-white/30 text-black font-semibold placeholder-white/40 outline-none focus:ring-2 focus:ring-indigo-400"
                 placeholder="Importo"
               />
 
@@ -88,7 +86,7 @@ const SpeseItem = ({ item, onDelete, onUpdate }) => {
                 type="date"
                 value={form.data}
                 onChange={(e) => setForm({ ...form, data: e.target.value })}
-                className="p-3 rounded-xl bg-white/10 backdrop-blur-lg border border-white/30 text-white font-semibold placeholder-white/40 outline-none focus:ring-2 focus:ring-indigo-400"
+                className="p-3 rounded-xl bg-white/10 backdrop-blur-lg border border-white/30 text-black font-semibold placeholder-white/40 outline-none focus:ring-2 focus:ring-indigo-400"
               />
 
               <div className="flex gap-3 mt-4">
