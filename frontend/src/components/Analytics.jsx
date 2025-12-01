@@ -28,7 +28,7 @@ const Analytics = () => {
   const saldoMese = totaleEntrate - totaleUscite
 
   return (
-    <div className="w-full p-6 pt-1">
+    <div className="w-full p-6 pt-2">
       <h1 className="text-3xl font-bold mb-6">Analytics</h1>
 
       <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mb-4">
