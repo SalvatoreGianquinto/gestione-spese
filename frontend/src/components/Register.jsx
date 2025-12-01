@@ -1,7 +1,7 @@
 import { useState } from "react"
-import axios from "axios"
 import zxcvbn from "zxcvbn"
 import { useNavigate } from "react-router-dom"
+import API from "../api"
 
 const Register = () => {
   const [nome, setNome] = useState("")
@@ -16,7 +16,7 @@ const Register = () => {
     setError("")
 
     try {
-      const res = await axios.post("/register", {
+      const res = await API.post("/register", {
         nome,
         email,
         password,
